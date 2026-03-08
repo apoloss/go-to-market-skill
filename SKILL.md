@@ -126,6 +126,56 @@ Annual totals table with total budget, total conversions, and blended CPI.
 ### Optimization Playbook
 Specific week-by-week and month-by-month optimization actions.
 
+### Account Warm-Up Protocol (New Ad Accounts)
+
+New ad accounts have no spending history, no pixel/conversion data, and no trust signal with the platform. Launching at full budget on a fresh account leads to poor delivery, inflated CPIs, and potential account flags/bans.
+
+**ALWAYS include a warm-up section in the paid channel plan when the user has new ad accounts.** During discovery, ask: "Are these new ad accounts or do you have existing accounts with spending history?"
+
+For each paid platform, include a warm-up protocol following these principles:
+
+#### Google Ads Warm-Up (2-3 weeks)
+- **Week 1:** Start with Search campaigns only (branded + high-intent keywords). Daily budget: $10-20. Goal: establish click history and quality scores.
+- **Week 2:** Add App Campaigns (UAC) at $20-30/day. Use "Install volume" bidding, NOT target CPI yet — let Google learn.
+- **Week 3:** Gradually increase to target daily budget. Switch to target CPI bidding once you have 30+ conversions.
+- **Important:** Don't launch YouTube or Display from a cold account — these need conversion data to optimize. Wait until you have 50+ installs tracked.
+- **Account health:** Ensure billing is verified, business verification is complete, and conversion tracking (Firebase/SDK) is confirmed receiving events BEFORE spending.
+
+#### Meta Ads Warm-Up (2-3 weeks)
+- **Week 1:** Start with a single App Install campaign, 1 ad set, 2-3 creatives. Daily budget: $15-25. Broad targeting (age + gender + country only). Use "Lowest Cost" bidding. Goal: warm the pixel and establish baseline delivery.
+- **Week 2:** Keep the same campaign running. Add 1 new ad set with interest-based targeting. Increase budget to $30-50/day total. Do NOT edit existing ad sets — duplicate and modify instead (editing resets learning phase).
+- **Week 3:** Introduce Advantage+ campaign alongside manual campaign. Scale to target daily budget. Begin testing new creatives.
+- **Critical rules:**
+  - Never increase budget more than 20-30% per day (avoids re-entering learning phase)
+  - Don't make more than 1 significant edit per ad set per day
+  - Need ~50 conversion events per ad set per week to exit learning phase
+  - Set up and verify Meta App Events SDK / Conversions API BEFORE first spend
+  - Complete Business Verification in Meta Business Manager to avoid account restrictions
+  - Avoid "red flag" behaviors on new accounts: sudden large budget spikes, frequent on/off toggling, multiple rejected ads
+
+#### Apple Search Ads Warm-Up (1-2 weeks)
+- **Week 1:** Start with branded keywords only (exact match). Daily budget: $10-15. These have high conversion rates and build account quality.
+- **Week 2:** Add category keywords (broad match). Enable Search Match to discover performing keywords. Increase to target budget.
+- ASA accounts warm up faster than Meta/Google because the audience is already in the App Store with high intent. Less warm-up needed.
+- **Pre-requisite:** App must be live in App Store with at least basic ASO (screenshots, description) before running ASA.
+
+#### TikTok Ads Warm-Up (2-3 weeks)
+- **Week 1:** Start with 1 campaign, 1 ad group, 3 video creatives. Daily budget: $20-30. Use "Lowest Cost" bidding with broad targeting.
+- **Week 2:** Keep winning ad group running. Add 1-2 new ad groups with different targeting. Budget: $40-60/day total.
+- **Week 3:** Scale gradually. Introduce App Event Optimization once you have 20+ installs per ad group.
+- **Critical:** TikTok's algorithm needs 50 conversions per ad group per week to optimize. Consolidate budget into fewer ad groups rather than spreading thin across many.
+- **Pre-requisite:** TikTok Events API or SDK must be integrated and firing events before first spend.
+
+#### General Warm-Up Principles
+- **Budget ramp:** Always start at 30-50% of target daily budget and increase 20-30% every 2-3 days
+- **Patience:** Platforms need 3-7 days of consistent spend to calibrate delivery algorithms
+- **Don't panic-optimize:** CPIs will be high in week 1 — this is normal. Don't kill campaigns before they have 50+ conversions
+- **Tracking first:** NEVER spend a dollar until conversion tracking is confirmed end-to-end (install event firing correctly in the platform's dashboard)
+- **One change at a time:** During warm-up, only change one variable at a time (budget OR creative OR targeting, never all at once)
+- **Account structure:** Start simple (1-2 campaigns) and add complexity as you scale. Complex structures on cold accounts fragment the limited data
+
+> **Flag in the timeline:** When the GTM plan uses new ad accounts, the Phase 1 timeline should explicitly account for 2-3 weeks of warm-up. The first month's install projections should be reduced by ~40-50% to reflect this ramp period. Adjust Phase 1 budget and expectations accordingly.
+
 ---
 
 ## 4. Organic Channels
